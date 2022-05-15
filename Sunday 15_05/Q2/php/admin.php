@@ -45,10 +45,14 @@ include_once '../config/connection.php';
                                  <td>".$row['user_password']."</td>
                                  <td>".$row['date_create']."</td>
                                  <td>".$row['last_login']."</td>
-                                 <td>".$row['edit']."</td>
+                                 <td>"."<input type='submit' value='Update' name='update'> <br>"."</td>
+                                 <td>"."<input type='submit' value='Delete' name='delete'> <br>"."</td>
                              </tr>";
                          $id++;  
                     }
+                }
+                if(isset($_POST['update'])){
+                    $row['first_name']=  "<input type='submit' value='Update' name='update'>";
                 }
                      ?>
         </tbody>

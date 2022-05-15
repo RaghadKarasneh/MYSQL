@@ -35,13 +35,13 @@ if (isset($_POST['submit'])){
                 $loginEmail_correct=false;
             }
     
-        
+        }
     }   
     
     if($loginEmail_correct && $loginPassword_correct)
     {
         header('location:welcome.php');
-        $row['last_login']= date("d-m-Y - h:i:sa");
+        $row['last-login']= date("d-m-Y - h:i:sa");
         // $_SESSION["array"];
     }else
     echo '<script language="javascript">';
@@ -66,7 +66,7 @@ if (isset($_POST['submit'])){
 	if ($adminEmail_correct && $adminPass_correct ){
 		header('location:admin.php');
 	}
-}}
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
