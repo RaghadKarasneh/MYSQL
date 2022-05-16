@@ -32,13 +32,13 @@ include_once '../config/connection.php';
         <tbody>
                 <?php
                      $id= 1;
-                     $sql1="SELECT * FROM phpform ;";
+                     $sql1="SELECT * FROM phpform WHERE delete_col='0';";
                      $result= mysqli_query($con , $sql1);
                      $result_check= mysqli_num_rows($result);
                  
                      if ($result_check > 0) {
                          while ($row=mysqli_fetch_assoc($result)) {
-                         echo "<tr>
+                         echo "<tr id=".$row['id'].">
                                  <td>".$row['id']."</td>
                                  <td>".$row['first_name']."</td>
                                  <td>".$row['email']."</td>
@@ -50,51 +50,14 @@ include_once '../config/connection.php';
                                  <input type='hidden' name='edit_id' value='".$row['id']."'>
                                  <input type='submit' value='Update' name='edit_btn'> 
                                  </form><br>"."</td>
-                                 <td>"."<form action='delete.php' method='post'>
-                                 <input type='submit' value='Delete' name='delete'>
+                                 <td>"."<form action='code.php' method='post'>
+                                 <input type='hidden' name='delete_id' value='".$row['id']."'>
+                                 <input type='submit' value='Delete' name='delete_btn'>
                                  </form> <br>"."</td>
                              </tr>";
                        
                     }
                 }
-                // if(isset($_POST['update'])){
-                //     $row['first_name']=  "<input type='submit' value='Update' name='update'>";
-                // }
-                // if(isset($_POST['update'])) {
-                //     update();
-                // }
-                // else if(isset($_POST['delete'])) {
-                //     delete();
-                // }
-                // function update() {
-                //    // echo '<script language="javascript">';
-                //    $servername='localhost';
-                //     $dbusername='root';
-                //     $password='';
-                //     $database='sunday 15_05';
-                //     //$newName=$_POST['firstName'];
-                //     //Create connection
-                //     $con=mysqli_connect($servername,$dbusername,$password,$database);
-                //     $newId=$_POST['hiddenUpdate'];
-                //     $sql2="UPDATE phpform set first_name='Sara' WHERE id='$newId';";
-                //     mysqli_query($con,$sql2);
-                //      callForm();
-                //     // echo '<form method="post">
-                //     // First Name:
-                //     // <input type="text" name="firstName">
-                //     // </form>'; 
-                //     //echo '</script>';
-                // }
-                // function callForm(){
-                   
-                //     echo '<script type="text/javascript">
-                //            window.onload = function () { alert("Welcome"); } 
-                //     </script>'; 
-                 
-                // }
-                // function delete() {
-                //     echo "This is Button2 that is delete";
-                
                      ?>
                    
             </form>

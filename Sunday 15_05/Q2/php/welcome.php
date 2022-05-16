@@ -17,16 +17,18 @@ include_once '../config/connection.php';
         
         <h1 class="text-center"> Welcome
              <?php
-              $sql1="SELECT * FROM phpform ;";
+              $sql1="SELECT * FROM phpform";
               $result= mysqli_query($con , $sql1);
               $result_check= mysqli_num_rows($result);
           
               if ($result_check > 0) {
+                while ($row=mysqli_fetch_assoc($result)) {
                   $row=mysqli_fetch_assoc($result);
+                 
                    
                 echo $row['first_name']. "  ". $row['middle_name']."  ".$row['last_name']." ".$row['final_name']; ?> To Your Home Page! </h1>
-                <p class="text-center"> We want to remind you that your email is: <?php echo $row['email']; ?>, and your phone number is: <?php echo $row['phone_number']; }?> </p>
+                <p class="text-center"> We want to remind you that your email is: <?php echo $row['email']; ?>, and your phone number is: <?php echo $row['phone_number'];}
+            }?> </p>
     </div>
-</video>
 </body>
 </html>

@@ -8,23 +8,19 @@ if (isset($_POST['submit'])){
     $adminEmail_correct=true;
     $adminPass_correct=true;
 
-    $sql1="SELECT * FROM phpform ;";
+    $sql1="SELECT * FROM phpform;";
     $result= mysqli_query($con , $sql1);
     $result_check= mysqli_num_rows($result);
-
     if ($result_check > 0) {
         while ($row=mysqli_fetch_assoc($result)) {
-         
-     
         //Check Email
-      
             if($loginEmail==($row['email'])){
                 $loginEmail_result="<span style=' color:green'>Correct Email</span><br>";
                 $loginEmail_correct=true;
                         //Check Password
         
-            if(($password==$row['password'])){
-                $loginPassword_result="<span style=' color:red'>Incorrect Password</span><br>";;
+            if(($password==$row['user_password'])){
+                $loginPassword_result="<span style=' color:green'>Correct Password</span><br>";
                 $loginPassword_correct=true;
             }else{
                 $loginPassword_result="<span style=' color:red'>Incorrect Password</span><br>";
@@ -34,14 +30,16 @@ if (isset($_POST['submit'])){
                 $loginEmail_result="<span style=' color:red'>Incorrect Email</span><br>";
                 $loginEmail_correct=false;
             }
-    
+
         }
+        
     }   
     
     if($loginEmail_correct && $loginPassword_correct)
     {
         header('location:welcome.php');
         $row['last-login']= date("d-m-Y - h:i:sa");
+        
         // $_SESSION["array"];
     }else
     echo '<script language="javascript">';
@@ -100,7 +98,6 @@ if (isset($_POST['submit'])){
                 <div class="have_no_account text-center">Don't have an account? <a href="signUp.php">Sign Up</a></div>
             </div>
         </form>
-        <video src="https://www.youtube.com/watch?v=mBL9Athx7ms" type="video/mp4"></video>
     </div>
 </body>
 </html>

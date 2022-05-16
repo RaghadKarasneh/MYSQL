@@ -115,7 +115,7 @@ if (isset($_POST['submit'])){
             header('location:login.php');
         }else
         {
-            echo "Eroor: ". $sql."<br>". mysqli_error($con);
+            echo "Error: ". $sql."<br>". mysqli_error($con);
         }
        
     }}
