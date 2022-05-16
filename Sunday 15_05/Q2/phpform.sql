@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2022 at 10:23 PM
+-- Generation Time: May 16, 2022 at 10:22 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.28
 
@@ -20,35 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `sunday 15_05`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `livecode`
---
-
-CREATE TABLE `livecode` (
-  `id` int(14) NOT NULL,
-  `emp_name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `salary` int(14) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `livecode`
---
-
-INSERT INTO `livecode` (`id`, `emp_name`, `email`, `salary`, `created_at`, `updated_at`) VALUES
-(1, 'Raghad Ibrahim ALKarasneh', 'raghad.karasneh@gmail.com', 0, '2022-05-15 09:40:09', '2022-05-15 09:40:09'),
-(2, 'Ahmad', 'ahmad@yahoo.com', 700, '2022-05-15 09:42:13', '2022-05-15 09:42:13'),
-(3, 'Ahmad', 'ahmad@yahoo.com', 700, '2022-05-15 09:51:57', '2022-05-15 09:51:57'),
-(4, 'Ahmad', 'ahmad@yahoo.com', 700, '2022-05-15 09:52:00', '2022-05-15 09:52:00'),
-(5, 'Ahmad', 'ahmad@yahoo.com', 700, '2022-05-15 09:52:30', '2022-05-15 09:52:30'),
-(6, 'Ahmad', 'ahmad@yahoo.com', 700, '2022-05-15 09:54:26', '2022-05-15 09:54:26'),
-(7, 'Ahmad', 'ahmad@yahoo.com', 700, '2022-05-15 09:54:40', '2022-05-15 09:54:40'),
-(8, 'samar', 'samar@yahoo.com', 900, '2022-05-15 10:01:31', '2022-05-15 10:01:31');
 
 -- --------------------------------------------------------
 
@@ -93,12 +64,6 @@ INSERT INTO `phpform` (`first_name`, `middle_name`, `last_name`, `final_name`, `
 --
 
 --
--- Indexes for table `livecode`
---
-ALTER TABLE `livecode`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `phpform`
 --
 ALTER TABLE `phpform`
@@ -107,12 +72,6 @@ ALTER TABLE `phpform`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `livecode`
---
-ALTER TABLE `livecode`
-  MODIFY `id` int(14) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `phpform`
