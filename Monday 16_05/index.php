@@ -30,7 +30,7 @@ INNER JOIN new_table ON livecode.id=new_table.id;";
 $users=$conn->query($sql6);
 
 foreach ($users as $row) {
-    print $row["user_name"] . " - " . $row["id"] . "<br/>";
+    print $row["user_name"] . " - " . $row["id"] . "<br/>"; // To print values after join from 2 tables
 }
 
 ?>

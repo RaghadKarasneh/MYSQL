@@ -45,14 +45,45 @@ include_once '../config/connection.php';
                                  <td>".$row['user_password']."</td>
                                  <td>".$row['date_create']."</td>
                                  <td>".$row['last_login']."</td>
-                                 <td>"."<input type='submit' value='Update' name='update'> <br>"."</td>
-                                 <td>"."<input type='submit' value='Delete' name='delete'> <br>"."</td>
+                                 <td>"."
+                                 <form method='post'>
+                                 <input type='submit' value='Update' name='update'> 
+                                 </form><br>"."</td>
+                                 <td>"."<form method='post'>
+                                 <input type='submit' value='Delete' name='delete'>
+                                 </form> <br>"."</td>
                              </tr>";
                          $id++;  
                     }
                 }
-                if(isset($_POST['update'])){
-                    $row['first_name']=  "<input type='submit' value='Update' name='update'>";
+                // if(isset($_POST['update'])){
+                //     $row['first_name']=  "<input type='submit' value='Update' name='update'>";
+                // }
+                if(isset($_POST['update'])) {
+                    update();
+                }
+                else if(isset($_POST['delete'])) {
+                    delete();
+                }
+                function update() {
+                   // echo '<script language="javascript">';
+                   $servername='localhost';
+                    $dbusername='root';
+                    $password='';
+                    $database='sunday 15_05';
+
+                    //Create connection
+                    $con=mysqli_connect($servername,$dbusername,$password,$database);
+                    $sql2="UPDATE phpform set first_name='Anas' WHERE first_name='samar';";
+                    mysqli_query($con,$sql2);
+                    echo '<form method="post">
+                    First Name:
+                    <input type="text" name="firstName">
+                    </form>'; 
+                    //echo '</script>';
+                }
+                function delete() {
+                    echo "This is Button2 that is delete";
                 }
                      ?>
         </tbody>
