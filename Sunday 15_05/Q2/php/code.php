@@ -16,13 +16,13 @@ if(isset($_POST['updatebtn']))
     {
         $_SESSION['status'] = "Your Data is Updated";
         $_SESSION['status_code'] = "success";
-        header('Location: update.php'); 
+        header('Location: admin.php'); 
     }
     else
     {
         $_SESSION['status'] = "Your Data is NOT Updated";
         $_SESSION['status_code'] = "error";
-        header('Location: update.php'); 
+        header('Location: admin.php'); 
     }{
 
     }
@@ -33,5 +33,6 @@ if(isset($_POST['delete_btn'])){
     $id = $_POST['delete_id'];
     $queryDelete = "UPDATE phpform SET delete_col='1' WHERE id='$id' ";
     $query_run = mysqli_query($con, $queryDelete);
+    header('Location: admin.php'); 
 }
 ?>
