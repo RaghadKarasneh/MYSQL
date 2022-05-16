@@ -39,53 +39,65 @@ include_once '../config/connection.php';
                      if ($result_check > 0) {
                          while ($row=mysqli_fetch_assoc($result)) {
                          echo "<tr>
-                                 <td>".$id."</td>
+                                 <td>".$row['id']."</td>
                                  <td>".$row['first_name']."</td>
                                  <td>".$row['email']."</td>
                                  <td>".$row['user_password']."</td>
                                  <td>".$row['date_create']."</td>
                                  <td>".$row['last_login']."</td>
                                  <td>"."
-                                 <form method='post'>
-                                 <input type='submit' value='Update' name='update'> 
+                                 <form action='update.php' method='post'>
+                                 <input type='hidden' name='edit_id' value='".$row['id']."'>
+                                 <input type='submit' value='Update' name='edit_btn'> 
                                  </form><br>"."</td>
-                                 <td>"."<form method='post'>
+                                 <td>"."<form action='delete.php' method='post'>
                                  <input type='submit' value='Delete' name='delete'>
                                  </form> <br>"."</td>
                              </tr>";
-                         $id++;  
+                       
                     }
                 }
                 // if(isset($_POST['update'])){
                 //     $row['first_name']=  "<input type='submit' value='Update' name='update'>";
                 // }
-                if(isset($_POST['update'])) {
-                    update();
-                }
-                else if(isset($_POST['delete'])) {
-                    delete();
-                }
-                function update() {
-                   // echo '<script language="javascript">';
-                   $servername='localhost';
-                    $dbusername='root';
-                    $password='';
-                    $database='sunday 15_05';
-
-                    //Create connection
-                    $con=mysqli_connect($servername,$dbusername,$password,$database);
-                    $sql2="UPDATE phpform set first_name='Anas' WHERE first_name='samar';";
-                    mysqli_query($con,$sql2);
-                    echo '<form method="post">
-                    First Name:
-                    <input type="text" name="firstName">
-                    </form>'; 
-                    //echo '</script>';
-                }
-                function delete() {
-                    echo "This is Button2 that is delete";
-                }
+                // if(isset($_POST['update'])) {
+                //     update();
+                // }
+                // else if(isset($_POST['delete'])) {
+                //     delete();
+                // }
+                // function update() {
+                //    // echo '<script language="javascript">';
+                //    $servername='localhost';
+                //     $dbusername='root';
+                //     $password='';
+                //     $database='sunday 15_05';
+                //     //$newName=$_POST['firstName'];
+                //     //Create connection
+                //     $con=mysqli_connect($servername,$dbusername,$password,$database);
+                //     $newId=$_POST['hiddenUpdate'];
+                //     $sql2="UPDATE phpform set first_name='Sara' WHERE id='$newId';";
+                //     mysqli_query($con,$sql2);
+                //      callForm();
+                //     // echo '<form method="post">
+                //     // First Name:
+                //     // <input type="text" name="firstName">
+                //     // </form>'; 
+                //     //echo '</script>';
+                // }
+                // function callForm(){
+                   
+                //     echo '<script type="text/javascript">
+                //            window.onload = function () { alert("Welcome"); } 
+                //     </script>'; 
+                 
+                // }
+                // function delete() {
+                //     echo "This is Button2 that is delete";
+                
                      ?>
+                   
+            </form>
         </tbody>
     </table>
 </body>
