@@ -17,18 +17,22 @@ include_once '../config/connection.php';
         
         <h1 class="text-center"> Welcome
              <?php
-              $sql1="SELECT * FROM phpform";
+            $email= $_SESSION['email'];
+           print_r( $email);
+              $sql1="SELECT * FROM phpform WHERE email='$email';";
               $result= mysqli_query($con , $sql1);
               $result_check= mysqli_num_rows($result);
           
               if ($result_check > 0) {
                 while ($row=mysqli_fetch_assoc($result)) {
-                  $row=mysqli_fetch_assoc($result);
-                 
+                //   $row=mysqli_fetch_assoc($result);
+                //  print_r($row['first_name']);
                    
-                echo $row['first_name']. "  ". $row['middle_name']."  ".$row['last_name']." ".$row['final_name']; ?> To Your Home Page! </h1>
-                <p class="text-center"> We want to remind you that your email is: <?php echo $row['email']; ?>, and your phone number is: <?php echo $row['phone_number'];}
-            }?> </p>
+                  echo"<br> <h5> Welcome ". $row['first_name']. "  ". $row['middle_name']."  ".$row['last_name']." ".$row['final_name']."<br>";
+                  echo "<div><h5> Your Email is : </h5>".$row['email'] ;
+                  echo "<h5> Your Mobile Phone is :</h5> ".$row['phone_number']."<br>";
+                }
+            }?> 
     </div>
 </body>
 </html>

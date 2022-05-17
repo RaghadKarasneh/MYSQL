@@ -4,33 +4,36 @@ include_once '../config/connection.php';
 if (isset($_POST['submit'])){
      
     $loginEmail=$_POST['loginEmail'];
+    $_SESSION['email']=$loginEmail;
     $loginPassword=$_POST['loginPassword'];
     $adminEmail_correct=true;
     $adminPass_correct=true;
-
-    $sql1="SELECT * FROM phpform;";
+    $loginEmail_correct =true;
+    $loginPassword_correct=true;
+    $sql1="SELECT * FROM phpform WHERE email='$loginEmail' and delete_col='0';";
     $result= mysqli_query($con , $sql1);
     $result_check= mysqli_num_rows($result);
+    // print_r ($result);
+    print_r($result);
     if ($result_check > 0) {
+       
         while ($row=mysqli_fetch_assoc($result)) {
         //Check Email
-            if($loginEmail==($row['email'])){
-                $loginEmail_result="<span style=' color:green'>Correct Email</span><br>";
-                $loginEmail_correct=true;
+        //$_SESSION['id']=$row['id'];
+           
                         //Check Password
-        
-            if(($password==$row['user_password'])){
-                $loginPassword_result="<span style=' color:green'>Correct Password</span><br>";
-                $loginPassword_correct=true;
-            }else{
-                $loginPassword_result="<span style=' color:red'>Incorrect Password</span><br>";
-                $loginPassword_correct=false;
-            }
-            }else{
-                $loginEmail_result="<span style=' color:red'>Incorrect Email</span><br>";
-                $loginEmail_correct=false;
-            }
+            
+                if(($password==$row['user_password'])){
+                    $loginPassword_result="<span style=' color:green'>Correct Password</span><br>";
+                    $loginPassword_correct=true;
 
+                }else{
+                    $loginPassword_result="<span style=' color:red'>Incorrect Password</span><br>";
+                    $loginPassword_correct=false;
+                    print_r($row['user_password']);
+            }
+            
+            //echo $loginEmail_correct;
         }
         
     }   
@@ -63,8 +66,8 @@ if (isset($_POST['submit'])){
 	}
 	if ($adminEmail_correct && $adminPass_correct ){
 		header('location:admin.php');
-	}
-}
+	}}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
