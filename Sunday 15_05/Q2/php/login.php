@@ -22,7 +22,12 @@ if (isset($_POST['submit'])){
         //$_SESSION['id']=$row['id'];
            
                         //Check Password
-            
+            if($loginEmail==($row['email'])){
+                $loginEmail_correct =true;
+            }else{
+                $loginEmail_result="<span style=' color:green'>Incorrect Email</span><br>";
+                $loginEmail_correct =false;
+            }}
                 if(($password==$row['user_password'])){
                     $loginPassword_result="<span style=' color:green'>Correct Password</span><br>";
                     $loginPassword_correct=true;
@@ -36,7 +41,7 @@ if (isset($_POST['submit'])){
             //echo $loginEmail_correct;
         }
         
-    }   
+    
     
     if($loginEmail_correct && $loginPassword_correct)
     {
@@ -45,10 +50,10 @@ if (isset($_POST['submit'])){
         
         // $_SESSION["array"];
     }else
-    echo '<script language="javascript">';
+   { echo '<script language="javascript">';
     echo 'alert("Incorrect Information")'; 
     echo '</script>';
-     
+}
     // cHeck Admin information 
     if($loginEmail=="admin@gmail.com"){
 		if($loginPassword== "Admin*1234"){
